@@ -1,0 +1,58 @@
+/*
+ * Este programa determina si un número introducido por el usuario es "afortunado" o no.
+ * Un número es considerado afortunado si tiene más dígitos afortunados que no afortunados.
+ * Los dígitos afortunados son: 3, 7, 8, 9. 
+ * El programa pide un número entero, analiza cada dígito y cuenta cuántos son afortunados.
+ * Al final, compara cuántos dígitos afortunados y no afortunados hay y muestra el resultado.
+ */
+
+import java.util.Scanner;
+
+public class Codigo5 {
+    
+    public static void main(String[] args) {
+        // Creamos el objeto Scanner para leer la entrada del usuario
+        Scanner s = new Scanner(System.in);
+
+        // Pedimos al usuario que introduzca un número
+        System.out.print("Introduzca un número: ");
+        
+        // Leemos la entrada como cadena para facilitar la manipulación de dígitos
+        String input = s.nextLine();
+
+        // Convertimos la cadena a entero para guardarlo como número original
+        int numeroOriginal = Integer.parseInt(input);
+        
+        // Inicializamos los contadores para dígitos afortunados y no afortunados
+        int afo = 0; // Contador de dígitos afortunados
+        int noAfo = 0; // Contador de dígitos no afortunados
+        
+        // Convertimos la cadena a número entero para usarlo en el bucle
+        int numero = numeroOriginal;
+        
+        // Bucle para analizar cada dígito del número
+        while (numero > 0) {
+            int digito = numero % 10; // Obtenemos el último dígito del número
+            
+            // Verificamos si el dígito es afortunado
+            if (digito == 3 || digito == 7 || digito == 8 || digito == 9) {
+                afo++; // Incrementamos el contador de afortunados
+            } else {
+                noAfo++; // Incrementamos el contador de no afortunados
+            }
+            
+            // Eliminamos el último dígito del número para seguir analizando
+            numero /= 10;
+        }
+        
+        // Comparamos los contadores y mostramos el resultado final
+        if (afo > noAfo) {
+            System.out.println("El " + numeroOriginal + " es un número afortunado.");
+        } else {
+            System.out.println("El " + numeroOriginal + " no es un número afortunado.");
+        }
+        
+        // Cerramos el Scanner para liberar recursos
+        s.close();
+    }
+}
